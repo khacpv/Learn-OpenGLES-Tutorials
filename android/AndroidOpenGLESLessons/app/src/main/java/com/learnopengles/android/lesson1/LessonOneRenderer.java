@@ -342,9 +342,9 @@ public class LessonOneRenderer implements GLSurfaceView.Renderer
         GLES20.glEnableVertexAttribArray(mPositionHandle);        
         
         // Pass in the color information
-        aTriangleBuffer.position(mColorOffset);
+        aTriangleBuffer.position(mColorOffset);	// vi tri ban dau cua array
         GLES20.glVertexAttribPointer(mColorHandle, mColorDataSize, GLES20.GL_FLOAT, false,
-        		mStrideBytes, aTriangleBuffer);        
+        		mStrideBytes, aTriangleBuffer);       // mColorDataSize phan tu, cach nhau mStrideBytes
         
         GLES20.glEnableVertexAttribArray(mColorHandle);
         

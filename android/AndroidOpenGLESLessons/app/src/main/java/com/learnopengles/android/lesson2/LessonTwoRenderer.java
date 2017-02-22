@@ -286,7 +286,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer
 		// TODO: Explain why we normalize the vectors, explain some of the vector math behind it all. Explain what is eye space.
 		final String vertexShader =
 			"uniform mat4 u_MVPMatrix;      \n"		// A constant representing the combined model/view/projection matrix.
-		  + "uniform mat4 u_MVMatrix;       \n"		// A constant representing the combined model/view matrix.	
+		  + "uniform mat4 u_MVMatrix;       \n"		// A constant representing the combined model/view matrix.	-> de tinh toan khoang cach giua nguon sang vs vertex
 		  + "uniform vec3 u_LightPos;       \n"	    // The position of the light in eye space.
 			
 		  + "attribute vec4 a_Position;     \n"		// Per-vertex position information we will pass in.
@@ -307,15 +307,16 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer
 		  + "   vec3 lightVector = normalize(u_LightPos - modelViewVertex);        \n"
 		// Calculate the dot product of the light vector and vertex normal. If the normal and light vector are
 		// pointing in the same direction then it will get max illumination.
-		  + "   float diffuse = max(dot(modelViewNormal, lightVector), 0.1);       \n" 	  		  													  
+		  + "   float diffuse = max(dot(modelViewNormal, lightVector), 0.0);       \n"
 		// Attenuate the light based on distance.
 		  + "   diffuse = diffuse * (1.0 / (1.0 + (0.25 * distance * distance)));  \n"
 		// Multiply the color by the illumination level. It will be interpolated across the triangle.
-		  + "   v_Color = a_Color * diffuse;                                       \n" 	 
+		  + "   v_Color = a_Color * (diffuse + 0.2);                                       \n"
 		// gl_Position is a special variable used to store the final position.
 		// Multiply the vertex by the matrix to get the final point in normalized screen coordinates.		
-		  + "   gl_Position = u_MVPMatrix * a_Position;                            \n"     
-		  + "}                                                                     \n"; 
+		  + "   gl_Position = u_MVPMatrix * a_Position;                            \n"
+		  + "   gl_PointSize = 15.0;                                                \n"
+		  + "}                                                                     \n";
 		
 		return vertexShader;
 	}
@@ -342,7 +343,7 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer
 		GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		
 		// Use culling to remove back faces.
-		GLES20.glEnable(GLES20.GL_CULL_FACE);
+		//GLES20.glEnable(GLES20.GL_CULL_FACE);
 		
 		// Enable depth testing
 		GLES20.glEnable(GLES20.GL_DEPTH_TEST);
@@ -523,7 +524,10 @@ public class LessonTwoRenderer implements GLSurfaceView.Renderer
         GLES20.glUniform3f(mLightPosHandle, mLightPosInEyeSpace[0], mLightPosInEyeSpace[1], mLightPosInEyeSpace[2]);
         
         // Draw the cube.
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);                               
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 36);
+
+		// Draw the point.
+		GLES20.glDrawArrays(GLES20.GL_POINTS, 0, 36);
 	}	
 	
 	/**
