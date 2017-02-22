@@ -17,6 +17,10 @@ Filter video project
 ----------
 https://github.com/khacpv/VidEffects
 
+Shader book
+----------
+https://thebookofshaders.com/
+
 Step to learn
 ----------
 
