@@ -21,6 +21,10 @@ Shader book
 ----------
 https://thebookofshaders.com/
 
+Medium blog 6 months start OpenGL
+----------
+http://blog.db-in.com/all-about-opengl-es-2-x-part-1/
+
 Step to learn
 ----------
 
