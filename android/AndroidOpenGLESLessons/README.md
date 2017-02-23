@@ -29,6 +29,10 @@ OpenGL functions
 ----------
 http://www.iquilezles.org/www/articles/functions/functions.htm
 
+Blog useful little functions & distance field
+----------
+http://www.iquilezles.org/www/index.htm
+
 Step to learn
 ----------
 
