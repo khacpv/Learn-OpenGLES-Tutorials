@@ -25,6 +25,10 @@ Medium blog 6 months start OpenGL
 ----------
 http://blog.db-in.com/all-about-opengl-es-2-x-part-1/
 
+OpenGL functions
+----------
+http://www.iquilezles.org/www/articles/functions/functions.htm
+
 Step to learn
 ----------
 
